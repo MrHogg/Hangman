@@ -1,0 +1,11 @@
+{% extends 'HangmanBundle::base.html.twig' %}
+
+{% block contents %}
+    <div id="home-container">
+        <div class="actions">
+            <a href="{{ path('hangman_hangman_reset') }}">Start new game</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer_class %}fixed{% endblock %}

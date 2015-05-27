@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock title %}Hangman Game - Joshua Hogg</title>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.5, user-scalable=1" />
+
+        {% stylesheets '@HangmanBundle/Resources/public/css/less/main.less' %}
+            <link rel="stylesheet" href="{{ asset_url }}">
+        {% endstylesheets %}
+
+        {% javascripts '@HangmanBundle/Resources/public/js/jquery-2.1.4.min.js'
+                       '@HangmanBundle/Resources/public/js/*'
+        %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        {% block head %}{% endblock %}
+    </head>
+
+    <body id="hangman">
+        <header>
+            <h1>Hangman Game</h1>
+        </header>
+
+        {{ include('HangmanBundle::message.html.twig', with_context = false) }}
+
+        {% block contents %}{% endblock %}
+
+        <footer class="{% block footer_class %}{% endblock %}">
+            <strong>Hangman Game</strong> by Joshua Hogg.
+        </footer>
+    </body>
+
+</html>

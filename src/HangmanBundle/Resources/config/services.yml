@@ -1,0 +1,18 @@
+parameters:
+    session.attribute_bag.class: Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag
+
+services:
+
+    hangman.word_repository:
+        class: HangmanBundle\Repository\WordRepository
+
+    hangman.word_handler:
+        class: HangmanBundle\Classes\WordHandler
+        arguments:
+            - @session
+
+    hangman.word_helper:
+        class: HangmanBundle\Classes\WordHelper
+        arguments:
+            - @hangman.word_repository
+            - @hangman.word_handler

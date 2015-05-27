@@ -1,0 +1,53 @@
+#hangman{
+    background-color: lightcyan;
+
+    #home-container {
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+    }
+
+    #game-container {
+        display: block;
+        text-align: center;
+
+        .word-wrapper {
+            span {
+                border: 2px solid darkcyan;
+                margin: 2px;
+                padding: 4px 8px;
+                display: inline-block;
+                text-transform: uppercase;
+                font-weight: bold;
+                width: 13px;
+            }
+        }
+
+        .letter-wrapper {
+            span {
+                margin: 2px;
+                padding: 5px;
+                color: lightgray;
+                text-transform: uppercase;
+
+                a {
+                    font-weight: bold;
+                    color: darkcyan;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .actions {
+        a {
+            border: 2px solid darkcyan;
+            background-color: cyan;
+            color: darkcyan;
+            padding: 5px 20px;
+            display: inline-block;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    }
+}

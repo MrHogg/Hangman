@@ -1,0 +1,11 @@
+<div class="flash-messages">
+    {% if app.session.flashbag|length %}
+        {% for type, flashMessages in app.session.flashbag %}
+            {% for message in flashMessages %}
+                <div class="type-{{ type }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+</div>

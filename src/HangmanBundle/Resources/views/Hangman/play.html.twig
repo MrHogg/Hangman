@@ -1,0 +1,50 @@
+{% extends 'HangmanBundle::base.html.twig' %}
+
+{% block contents %}
+    <div id="game-container">
+        <div class="word-wrapper">
+            {% for letter in word|split('') %}
+                <span>{{ letter }}</span>
+            {% endfor %}
+        </div>
+
+        <img src="{{ asset('bundles/hangman/images/hangman-' ~ min(guesses['invalid']|length, 7)  ~ '.svg') }}"
+             height="230px"
+             width="200px" />
+
+        {% if not won and not lost %}
+            <div class="letter-wrapper">
+                {% for letter in 'a'..'z' %}
+                    <span>
+                        {% if letter in guesses['valid'] or letter in guesses['invalid'] %}
+                            {{ letter }}
+                        {% else %}
+                            <a href="{{ path('hangman_hangman_guess', {'letter': letter}) }}">
+                                {{ letter }}
+                            </a>
+                        {% endif %}
+                    </span>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="game-won{{ not won ? ' hidden' }}">
+            <h3>Congratulations.</h3>
+            <p class="game-won">
+                You guessed the word with just <span class="attempts">{{ guesses['invalid']|length }}</span>
+                invalid guesses.
+            </p>
+        </div>
+
+        <div class="game-lost{{ not lost ? ' hidden' }}">
+            <h3>Game over.</h3>
+            <p>The correct word is <span class="answer">{{ answer|default('') }}</span>.</p>
+        </div>
+
+        <div class="actions">
+            <a href="{{ path('hangman_hangman_reset') }}" class="reset-link">
+                {{ won or lost ? 'Start again' : 'Reset' }}
+            </a>
+        </div>
+    </div>
+{% endblock %}
